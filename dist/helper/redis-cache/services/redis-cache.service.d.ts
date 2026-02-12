@@ -19,4 +19,5 @@ export declare class RedisCacheService {
     }>;
     getCacheByKeys(keys: string): Promise<any>;
     getAllKeysFromDB(selectedDb: number): Promise<Array<string>>;
+    deleteCacheByKeys(keys: string): Promise<number>;
 }

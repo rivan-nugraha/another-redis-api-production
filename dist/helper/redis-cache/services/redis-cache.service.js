@@ -80,6 +80,9 @@ let RedisCacheService = class RedisCacheService {
         } while (cursor !== '0');
         return keys;
     }
+    async deleteCacheByKeys(keys) {
+        return this.client.del(keys);
+    }
 };
 exports.RedisCacheService = RedisCacheService;
 exports.RedisCacheService = RedisCacheService = __decorate([

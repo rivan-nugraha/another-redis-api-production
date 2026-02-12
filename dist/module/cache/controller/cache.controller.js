@@ -21,11 +21,16 @@ const zod_query_decorator_1 = require("../../../core/decorator/zod-query.decorat
 const get_all_keys_request_dto_1 = require("./dto/get-all-keys.request.dto");
 const get_cache_by_key_use_case_1 = require("../use-case/get-cache-by-key.use-case");
 const get_cache_by_key_request_dto_1 = require("./dto/get-cache-by-key.request.dto");
+const secure_post_decorator_1 = require("../../../core/decorator/secure-post.decorator");
+const zod_body_decorator_1 = require("../../../core/decorator/zod-body.decorator");
+const delete_cache_by_key_request_dto_1 = require("./dto/delete-cache-by-key.request.dto");
+const delete_cache_by_key_use_case_1 = require("../use-case/delete-cache-by-key.use-case");
 let CacheController = class CacheController {
-    constructor(getListDBUsecase, getAllKeysUsecase, getCacheByKeyUsecase) {
+    constructor(getListDBUsecase, getAllKeysUsecase, getCacheByKeyUsecase, deleteCacheByKeyUseCase) {
         this.getListDBUsecase = getListDBUsecase;
         this.getAllKeysUsecase = getAllKeysUsecase;
         this.getCacheByKeyUsecase = getCacheByKeyUsecase;
+        this.deleteCacheByKeyUseCase = deleteCacheByKeyUseCase;
     }
     async getListDBHandler() {
         return this.getListDBUsecase.execute();
@@ -35,6 +40,9 @@ let CacheController = class CacheController {
     }
     async getCacheByKeyHandler(query) {
         return this.getCacheByKeyUsecase.execute({ data: query });
+    }
+    async deleteCacheByKeyHandler(body) {
+        return this.deleteCacheByKeyUseCase.execute({ data: body });
     }
 };
 exports.CacheController = CacheController;
@@ -58,10 +66,18 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], CacheController.prototype, "getCacheByKeyHandler", null);
+__decorate([
+    (0, secure_post_decorator_1.SecurePost)('delete-by-key'),
+    __param(0, (0, zod_body_decorator_1.ZodBody)(delete_cache_by_key_request_dto_1.DeleteCacheByKeyRequestDto)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], CacheController.prototype, "deleteCacheByKeyHandler", null);
 exports.CacheController = CacheController = __decorate([
     (0, common_1.Controller)('v1/cache'),
     __metadata("design:paramtypes", [get_list_db_use_case_1.GetListDBUseCase,
         get_all_keys_use_case_1.GetAllKeysUseCase,
-        get_cache_by_key_use_case_1.GetCacheByKeyUseCase])
+        get_cache_by_key_use_case_1.GetCacheByKeyUseCase,
+        delete_cache_by_key_use_case_1.DeleteCacheByKeyUseCase])
 ], CacheController);
 //# sourceMappingURL=cache.controller.js.map
