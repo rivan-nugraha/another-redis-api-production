@@ -1,0 +1,1 @@
+{"version":3,"file":"mongo-entity.js","sourceRoot":"","sources":["../../../../src/core/base/domain/mongo-entity.ts"],"names":[],"mappings":";;;AAEA,MAAsB,eAAe;IAGnC,YAAY,KAAkB;QAC5B,IAAI,KAAK,EAAE,CAAC;YACV,MAAM,CAAC,MAAM,CAAC,IAAI,EAAE,KAAK,CAAC,CAAC;QAC7B,CAAC;IACH,CAAC;CACF;AARD,0CAQC"}
